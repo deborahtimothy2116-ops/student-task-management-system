@@ -252,7 +252,8 @@ EduTask leverages an automated GitHub Actions continuous integration and continu
 - **PO11 (Project Management & Finance):** Implementation of WBS, Critical Path Method (CPM), milestone tracking, and deployment on zero-cost free cloud platforms (Render).
 
 ## 4.4 Deliverables Summary & Verification Checklist
-1. **GitHub Repository Structure:** Complete source code with `main`, `develop`, and `feature` branches.
-2. **Gantt Chart PDF:** Generated vector document [`docs/Gantt_Chart.pdf`](file:///C:/Users/dorot/OneDrive/deborah%20FODS/SE%20ASSIGNMENT4/docs/Gantt_Chart.pdf).
-3. **CI/CD Pipeline Artifacts:** Automated PyTest test execution passing 18/18 tests with JUnit XML (`tests/junit-report.xml`) and `.github/workflows/ci-cd.yml`.
-4. **Deployed Link & Cloud Blueprint:** Ready for 1-click cloud deployment via `render.yaml` and `Dockerfile`.
+1. **GitHub Repository Link:** [https://github.com/deborahtimothy2116-ops/student-task-management-system](https://github.com/deborahtimothy2116-ops/student-task-management-system) (Includes `main`, `develop`, and `feature/cr-101-workload-estimator` branches with tags `v1.0` and `v1.1`).
+2. **Gantt Chart PDF:** Generated vector document [`docs/Gantt_Chart.pdf`](file:///C:/Users/dorot/OneDrive/deborah%20FODS/SE%20ASSIGNMENT4/docs/Gantt_Chart.pdf) (Deliverable 2).
+3. **CI/CD Pipeline Artifacts:** Automated PyTest test execution passing 18/18 tests with JUnit XML (`tests/junit-report.xml`) and `.github/workflows/ci-cd.yml` (Deliverable 3).
+4. **Deployed Link & Cloud Blueprint:** Ready for 1-click cloud deployment via `render.yaml` and `Dockerfile` (Deliverable 4).
+

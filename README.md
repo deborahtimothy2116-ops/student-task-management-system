@@ -17,7 +17,7 @@ This repository serves as the complete implementation for the **Unit-V Supportin
 
 | Deliverable | Description | Location / Status | Marks |
 | :--- | :--- | :--- | :---: |
-| **Deliverable 1** | **GitHub Repository & SCM History** | GitFlow (`main`, `develop`, `feature/cr-101`), Tags `v1.0` & `v1.1` | **5M** |
+| **Deliverable 1** | **GitHub Repository & SCM History** | [GitHub Repo](https://github.com/deborahtimothy2116-ops/student-task-management-system) &bull; Branches: `main`, `develop`, `feature/cr-101-workload-estimator` &bull; Tags: `v1.0`, `v1.1` | **5M** |
 | **Deliverable 2** | **Project Scheduling & Gantt Chart** | Vector PDF: [`docs/Gantt_Chart.pdf`](docs/Gantt_Chart.pdf) & HTML view: [`docs/gantt_chart.html`](docs/gantt_chart.html) | **5M** |
 | **Deliverable 3** | **DevOps CI/CD Pipeline & Tests** | GitHub Actions [`ci-cd.yml`](.github/workflows/ci-cd.yml), PyTest JUnit XML [`junit-report.xml`](tests/junit-report.xml) | **7M** |
 | **Deliverable 4** | **4-Page Report & Viva Guide** | Report: [`docs/PROJECT_REPORT_4_PAGE.md`](docs/PROJECT_REPORT_4_PAGE.md), Viva: [`docs/VIVA_PREPARATION_GUIDE.md`](docs/VIVA_PREPARATION_GUIDE.md) | **3M** |
@@ -51,8 +51,8 @@ This repository serves as the complete implementation for the **Unit-V Supportin
 ### 1. Run Application Locally
 ```bash
 # Clone the repository
-git clone <your-repo-link>
-cd SE-ASSIGNMENT4
+git clone https://github.com/deborahtimothy2116-ops/student-task-management-system.git
+cd student-task-management-system
 
 # Install dependencies
 pip install -r requirements.txt
@@ -78,12 +78,11 @@ docker ps
 curl http://localhost:8000/api/health
 ```
 
-### 4. Deploy Infrastructure via Terraform (IaC)
+### 4. Push to Remote GitHub Repository (Deliverable 1)
 ```bash
-cd terraform
-terraform init
-terraform plan
-terraform apply -auto-approve
+git push -u origin main --tags
+git push origin develop
+git push origin feature/cr-101-workload-estimator
 ```
 
 ### 5. Run Synthetic Health & Uptime Monitoring Daemon
