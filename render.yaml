@@ -1,0 +1,17 @@
+# Render Blueprint Specification (Free Cloud Web Service Deployment)
+# Connect your GitHub repository to Render (https://render.com) for automatic CI/CD deployment
+services:
+  - type: web
+    name: edutask-student-task-manager
+    runtime: python
+    plan: free
+    region: oregon
+    branch: main
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn src.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: PYTHON_VERSION
+        value: 3.11.8
