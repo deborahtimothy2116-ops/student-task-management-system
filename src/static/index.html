@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduTask - Student Task Management System | 231CS523</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand-group">
+        <div class="logo-icon">🎓</div>
+        <div>
+          <h1>EduTask <span class="badge baseline-badge">Baseline v1.1</span></h1>
+          <p class="subtitle">Student Task Management System &bull; Course 231CS523 Unit-V</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="open-add-modal-btn" class="btn btn-primary">+ New Task</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <!-- Workload & Analytics Summary Card (CR-101 Feature) -->
+    <section class="analytics-section">
+      <div class="analytics-card">
+        <span class="analytics-label">Total Assignments</span>
+        <span class="analytics-value" id="stat-total">0</span>
+      </div>
+      <div class="analytics-card">
+        <span class="analytics-label">Pending / In Progress</span>
+        <span class="analytics-value warning-text" id="stat-pending">0</span>
+      </div>
+      <div class="analytics-card">
+        <span class="analytics-label">Completed Tasks</span>
+        <span class="analytics-value success-text" id="stat-completed">0</span>
+      </div>
+      <div class="analytics-card">
+        <span class="analytics-label">Remaining Study Load</span>
+        <span class="analytics-value highlight-text" id="stat-hours">0.0 hrs</span>
+      </div>
+      <div class="analytics-card">
+        <span class="analytics-label">Completion Rate</span>
+        <span class="analytics-value" id="stat-rate">0%</span>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="progress-bar"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter & Search Toolbar -->
+    <section class="toolbar-section">
+      <div class="search-box">
+        <input type="text" id="search-input" placeholder="Search assignments, course tags, keywords...">
+      </div>
+      <div class="filter-group">
+        <label for="filter-course">Course:</label>
+        <select id="filter-course">
+          <option value="">All Courses</option>
+          <option value="231CS523">231CS523 (SE Lab)</option>
+          <option value="231CS521">231CS521 (Data Science)</option>
+          <option value="231CS522">231CS522 (Networks)</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="filter-priority">Priority:</label>
+        <select id="filter-priority">
+          <option value="">All Priorities</option>
+          <option value="CRITICAL">Critical</option>
+          <option value="HIGH">High</option>
+          <option value="MEDIUM">Medium</option>
+          <option value="LOW">Low</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="filter-status">Status:</label>
+        <select id="filter-status">
+          <option value="">All Statuses</option>
+          <option value="PENDING">Pending</option>
+          <option value="IN_PROGRESS">In Progress</option>
+          <option value="COMPLETED">Completed</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Task List Container -->
+    <section class="tasks-container">
+      <div class="tasks-header">
+        <h2 id="task-list-title">My Assignments & Tasks</h2>
+        <span class="task-count" id="task-count-badge">Loading...</span>
+      </div>
+      <div id="tasks-list" class="tasks-grid">
+        <!-- Rendered via JavaScript -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Add Task Modal -->
+  <div id="task-modal" class="modal-overlay hidden">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3>Create New Academic Task</h3>
+        <button id="close-modal-btn" class="close-btn">&times;</button>
+      </div>
+      <form id="create-task-form" class="modal-form">
+        <div class="form-group">
+          <label for="task-title">Task Title *</label>
+          <input type="text" id="task-title" required placeholder="e.g. Implement Dockerfile & CI Pipeline">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="task-course">Course Tag *</label>
+            <input type="text" id="task-course" required placeholder="e.g. 231CS523">
+          </div>
+          <div class="form-group">
+            <label for="task-due-date">Due Date *</label>
+            <input type="date" id="task-due-date" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="task-priority">Priority Level</label>
+            <select id="task-priority">
+              <option value="LOW">Low</option>
+              <option value="MEDIUM" selected>Medium</option>
+              <option value="HIGH">High</option>
+              <option value="CRITICAL">Critical</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="task-hours">Estimated Hours (CR-101)</label>
+            <input type="number" id="task-hours" step="0.5" min="0.5" max="50" value="2.0">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="task-desc">Description & Instructions</label>
+          <textarea id="task-desc" rows="3" placeholder="Add specific milestones or assignment rubric details..."></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="cancel-modal-btn" class="btn btn-secondary">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Task</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- DevOps & Monitoring Live Footer -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <span class="system-health-indicator">
+          <span class="status-dot pulse" id="health-dot"></span>
+          <span id="health-status-text">Health: Checking...</span>
+        </span>
+        <span class="divider">|</span>
+        <span id="footer-uptime">Uptime: --</span>
+        <span class="divider">|</span>
+        <span id="footer-version">Release: v1.1.0</span>
+      </div>
+      <div class="footer-right">
+        <span>Software Engineering (Lab Integrated) - 231CS523 &bull; CO5 (PO5, PO9, PO11)</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
