@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EduTask Project Gantt Chart & PERT Schedule | 231CS523</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 2rem; background: #f8fafc; color: #1e293b; }
+    .header { background: #0f172a; color: white; padding: 1.5rem 2rem; border-radius: 8px; margin-bottom: 2rem; }
+    .header h1 { margin: 0 0 0.5rem 0; font-size: 1.6rem; }
+    .header p { margin: 0; color: #94a3b8; font-size: 0.95rem; }
+    .legend { display: flex; gap: 1.5rem; margin-bottom: 1.5rem; background: white; padding: 1rem; border-radius: 8px; border: 1px solid #e2e8f0; }
+    .legend-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; }
+    .color-box { width: 18px; height: 18px; border-radius: 4px; }
+    table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    th, td { padding: 0.75rem 1rem; border-bottom: 1px solid #e2e8f0; font-size: 0.85rem; text-align: left; }
+    th { background: #f1f5f9; font-weight: 600; color: #475569; }
+    .timeline-cell { width: 45%; }
+    .gantt-bar-container { position: relative; height: 26px; background: #f1f5f9; border-radius: 4px; overflow: hidden; }
+    .gantt-bar { position: absolute; height: 100%; color: white; font-size: 0.72rem; font-weight: bold; line-height: 26px; text-align: center; border-radius: 3px; }
+    .crit-badge { background: #fee2e2; color: #991b1b; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: 600; font-size: 0.75rem; }
+    .slack-badge { background: #e0f2fe; color: #0369a1; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: 600; font-size: 0.75rem; }
+    .milestone-tag { font-size: 0.75rem; background: #fef3c7; color: #92400e; padding: 0.15rem 0.4rem; border-radius: 4px; font-weight: 600; margin-left: 0.4rem; }
+    @media print { body { margin: 0; } .header { background: #0f172a !important; -webkit-print-color-adjust: exact; } }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>EduTask Project Management Gantt Chart & Schedule</h1>
+    <p>Course: 231CS523 Software Engineering &bull; Unit-V Supporting Activity (CO5, PO5, PO9, PO11)</p>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="color-box" style="background: #ef4444;"></div> <strong>Critical Path (Zero Float)</strong></div>
+    <div class="legend-item"><div class="color-box" style="background: #3b82f6;"></div> Non-Critical Tasks (With Float)</div>
+    <div class="legend-item"><span style="font-size: 1.2rem;">💎</span> Project Milestones (M1 to M5)</div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>WBS</th>
+        <th>Task Description</th>
+        <th>Assigned Resource</th>
+        <th>Dur</th>
+        <th>Status</th>
+        <th>Timeline (Day 1 to 28)</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr>
+          <td><strong>1.1</strong></td>
+          <td>Problem Analysis & SRS Document </td>
+          <td>All Team</td>
+          <td>3d</td>
+          <td><span class="crit-badge">Critical (0 slack)</span></td>
+          <td class="timeline-cell">
+            <div class="gantt-bar-container">
+              <div class="gantt-bar" style="left: 0.0%; width: 10.71%; background-color: #ef4444;">
+                Day 1-3
+              </div>
+            </div>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><strong>1.2</strong></td>
+          <td>WBS & Schedule Planning <span class='milestone-tag'>💎 M1: Architecture Baseline (Day 4)</span></td>
+          <td>Student 1 (PM)</td>
+          <td>2d</td>
+          <td><span class="crit-badge">Critical (0 slack)</span></td>
+          <td class="timeline-cell">
+            <div class="gantt-bar-container">
+              <div class="gantt-bar" style="left: 7.14%; width: 7.14%; background-color: #ef4444;">
+                Day 3-4
+              </div>
+            </div>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><strong>2.1</strong></td>
+          <td>Architecture & DB Design </td>
+          <td>Student 2 (Backend)</td>
+          <td>3d</td>
+          <td><span class="crit-badge">Critical (0 slack)</span></td>
+          <td class="timeline-cell">
+            <div class="gantt-bar-container">
+              <div class="gantt-bar" style="left: 10.71%; width: 10.71%; background-color: #ef4444;">
+                Day 4-6
+              </div>
+            </div>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><strong>2.2</strong></td>
+          <td>UI/UX Wireframes & Mockups </td>
+          <td>Student 3 (Frontend)</td>
+          <td>2d</td>
+          <td><span class="slack-badge">Non-Critical</span></td>
+          <td class="timeline-cell">
+            <div class="gantt-bar-container">
+              <div class="gantt-bar" style="left: 10.71%; width: 7.14%; background-color: #3b82f6;">
+                Day 4-5
+              </div>
+            </div>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><strong>3.1</strong></td>
+          <td>FastAPI Core REST API (CRUD) </td>
+          <td>Student 2 (Backend)</td>
+          <td>5d</td>
+          <td><span class="crit-badge">Critical (0 slack)</span></td>
+          <td class="timeline-cell">
+            <div class="gantt-bar-container">
+              <div class="gantt-bar" style="left: 17.86%; width: 17.86%; background-color: #ef4444;">
+                Day 6-10
+              </div>
+            </div>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><strong>3.2</strong></td>
+          <td>Frontend SPA Implementation </td>
+          <td>Student 3 (Frontend)</td>
+          <td>5d</td>
+          <td><span class="slack-badge">Non-Critical</span></td>
+          <td class="timeline-cell">
+            <div class="gantt-bar-container">
+              <div class="gantt-bar" style="left: 21.43%; width: 17.86%; background-color: #3b82f6;">
+                Day 7-11
+              </div>
+            </div>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><strong>3.3</strong></td>
+          <td>Initial Baseline SCM Tag v1.0 <span class='milestone-tag'>💎 M2: Baseline v1.0 Frozen (Day 11)</span></td>
+          <td>Student 4 (QA/SCM)</td>
+          <td>1d</td>
+          <td><span class="crit-badge">Critical (0 slack)</span></td>
+          <td class="timeline-cell">
+            <div class="gantt-bar-container">
+              <div class="gantt-bar" style="left: 35.71%; width: 3.57%; background-color: #ef4444;">
+                Day 11-11
+              </div>
+            </div>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><strong>4.1</strong></td>
+          <td>PyTest Suite & Integration Tests </td>
+          <td>Student 4 (QA/SCM)</td>
+          <td>4d</td>
+          <td><span class="crit-badge">Critical (0 slack)</span></td>
+          <td class="timeline-cell">
+            <div class="gantt-bar-container">
+              <div class="gantt-bar" style="left: 35.71%; width: 14.29%; background-color: #ef4444;">
+                Day 11-14
+              </div>
+            </div>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><strong>4.2</strong></td>
+          <td>Change Request CR-101 Evaluation </td>
+          <td>All (CCB)</td>
+          <td>2d</td>
+          <td><span class="slack-badge">Non-Critical</span></td>
+          <td class="timeline-cell">
+            <div class="gantt-bar-container">
+              <div class="gantt-bar" style="left: 42.86%; width: 7.14%; background-color: #3b82f6;">
+                Day 13-14
+              </div>
+            </div>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><strong>4.3</strong></td>
+          <td>Feature Branch: CR-101 Analytics </td>
+          <td>Student 2 & 3</td>
+          <td>4d</td>
+          <td><span class="crit-badge">Critical (0 slack)</span></td>
+          <td class="timeline-cell">
+            <div class="gantt-bar-container">
+              <div class="gantt-bar" style="left: 46.43%; width: 14.29%; background-color: #ef4444;">
+                Day 14-17
+              </div>
+            </div>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><strong>4.4</strong></td>
+          <td>Regression Testing & Tag v1.1 <span class='milestone-tag'>💎 M3: Baseline v1.1 Tagged (Day 18)</span></td>
+          <td>Student 4 (QA/SCM)</td>
+          <td>2d</td>
+          <td><span class="crit-badge">Critical (0 slack)</span></td>
+          <td class="timeline-cell">
+            <div class="gantt-bar-container">
+              <div class="gantt-bar" style="left: 57.14%; width: 7.14%; background-color: #ef4444;">
+                Day 17-18
+              </div>
+            </div>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><strong>5.1</strong></td>
+          <td>Docker Containerization </td>
+          <td>Student 1 (DevOps)</td>
+          <td>3d</td>
+          <td><span class="crit-badge">Critical (0 slack)</span></td>
+          <td class="timeline-cell">
+            <div class="gantt-bar-container">
+              <div class="gantt-bar" style="left: 60.71%; width: 10.71%; background-color: #ef4444;">
+                Day 18-20
+              </div>
+            </div>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><strong>5.2</strong></td>
+          <td>GitHub Actions CI/CD Pipeline <span class='milestone-tag'>💎 M4: CI/CD Pipeline Live (Day 22)</span></td>
+          <td>Student 1 (DevOps)</td>
+          <td>3d</td>
+          <td><span class="crit-badge">Critical (0 slack)</span></td>
+          <td class="timeline-cell">
+            <div class="gantt-bar-container">
+              <div class="gantt-bar" style="left: 67.86%; width: 10.71%; background-color: #ef4444;">
+                Day 20-22
+              </div>
+            </div>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><strong>5.3</strong></td>
+          <td>IaC (Terraform & Compose) </td>
+          <td>Student 1 (DevOps)</td>
+          <td>3d</td>
+          <td><span class="crit-badge">Critical (0 slack)</span></td>
+          <td class="timeline-cell">
+            <div class="gantt-bar-container">
+              <div class="gantt-bar" style="left: 75.0%; width: 10.71%; background-color: #ef4444;">
+                Day 22-24
+              </div>
+            </div>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><strong>5.4</strong></td>
+          <td>Health Monitoring & Uptime Check </td>
+          <td>Student 1 & 4</td>
+          <td>2d</td>
+          <td><span class="crit-badge">Critical (0 slack)</span></td>
+          <td class="timeline-cell">
+            <div class="gantt-bar-container">
+              <div class="gantt-bar" style="left: 82.14%; width: 7.14%; background-color: #ef4444;">
+                Day 24-25
+              </div>
+            </div>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><strong>5.5</strong></td>
+          <td>Cloud Deployment (Render) <span class='milestone-tag'>💎 M5: Production Release (Day 26)</span></td>
+          <td>Student 1 (DevOps)</td>
+          <td>2d</td>
+          <td><span class="crit-badge">Critical (0 slack)</span></td>
+          <td class="timeline-cell">
+            <div class="gantt-bar-container">
+              <div class="gantt-bar" style="left: 85.71%; width: 7.14%; background-color: #ef4444;">
+                Day 25-26
+              </div>
+            </div>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><strong>6.1</strong></td>
+          <td>4-Page Technical Report & Viva <span class='milestone-tag'>💎 Final Submission (Day 28)</span></td>
+          <td>All Team</td>
+          <td>3d</td>
+          <td><span class="crit-badge">Critical (0 slack)</span></td>
+          <td class="timeline-cell">
+            <div class="gantt-bar-container">
+              <div class="gantt-bar" style="left: 89.29%; width: 10.71%; background-color: #ef4444;">
+                Day 26-28
+              </div>
+            </div>
+          </td>
+        </tr>
+        
+    </tbody>
+  </table>
+</body>
+</html>
